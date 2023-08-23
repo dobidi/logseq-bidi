@@ -2,12 +2,25 @@
   "name": "logseq-bidi",
   "version": "0.0.1",
   "description": "A Logseq plugin for adding bidirectional text support",
-  "main": "index.html",
+  "main": "dist/index.html",
   "repository": "https://github.com/dobidi/logseq-bidi",
   "author": "Mostafa Ahangarha",
   "license": "AGPL-v3-or-later",
-  "private": false,
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build --no-source-maps index.html --public-url ./"
+  },
+  "dependencies": {
+    "@logseq/libs": "^0.0.15"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  },
   "logseq": {
+    "icon": "icon.png",
     "id": "logseq-bidi"
   }
 }
