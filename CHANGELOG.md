@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2023-08-26
+
 ### Added
 -  Add style to fix bidi in default theme (#4)
 
@@ -20,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The initial release with the core functionality (#1)
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[unreleased]: https://github.com/dobidi/logseq-bidi/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/dobidi/logseq-bidi/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/dobidi/logseq-bidi/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/dobidi/logseq-bidi/releases/tag/v0.0.1

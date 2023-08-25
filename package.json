@@ -1,6 +1,6 @@
 {
   "name": "logseq-bidi",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A Logseq plugin for adding bidirectional text support",
   "main": "dist/index.html",
   "repository": "https://github.com/dobidi/logseq-bidi",
