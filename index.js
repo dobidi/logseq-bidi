@@ -18,7 +18,6 @@ const applyBidi = () => {
       if (mutation.type !== 'childList') continue;
 
       for(let addedNode of mutation.addedNodes) {
-        console.log(addedNode)
         if (addedNode.classList?.contains('ls-block')) setDirAuto(addedNode)
         
         const subLsBlocks = addedNode.querySelectorAll(cssSelector)
