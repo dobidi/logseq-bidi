@@ -7,22 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2024-01-04
+
+### Fixed
+-  Fixed left/right arrow key behavior in RTL content (#9)
+
 ## [0.1.0] - 2023-08-26
 
 ### Added
--  Add style to fix bidi in default theme (#4)
+-  Add style to fix bidi in the default theme (#4)
 
 ## [0.0.2] - 2023-08-25
 
 ### Fixed
 - Removed the noisy log
-- Update content of License file to the correct one (AGPL)
+- Update the license file to the correct one (AGPL)
 
 ## [0.0.1] - 2023-08-24
 
 The initial release with the core functionality (#1)
 
-[unreleased]: https://github.com/dobidi/logseq-bidi/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/dobidi/logseq-bidi/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/dobidi/logseq-bidi/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/dobidi/logseq-bidi/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/dobidi/logseq-bidi/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/dobidi/logseq-bidi/releases/tag/v0.0.1
