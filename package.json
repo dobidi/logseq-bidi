@@ -5,7 +5,7 @@
   "main": "dist/index.html",
   "repository": "https://github.com/dobidi/logseq-bidi",
   "author": "Mostafa Ahangarha",
-  "license": "AGPL-3.0",
+  "license": "AGPL-3.0-or-later",
   "targets": {
     "main": false
   },
