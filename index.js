@@ -1,18 +1,18 @@
-import '@logseq/libs'
+import '@logseq/libs';
 
-const graphDocument = window.parent.document
+const graphDocument = window.parent.document;
 
-const setDirAuto = (node) => node.setAttribute('dir', 'auto')
-const setDirAutoToAll = (nodes) => nodes.forEach((node) => setDirAuto(node))
+const setDirAuto = (node) => node.setAttribute('dir', 'auto');
+const setDirAutoToAll = (nodes) => nodes.forEach((node) => setDirAuto(node));
 
 const handleLeftRightKey = (e) => {
-  if (e.shiftKey || e.ctrlKey) return
-  if (!["ArrowRight", "ArrowLeft"].includes(e.code)) return
+  if (e.shiftKey || e.ctrlKey) return;
+  if (!['ArrowRight', 'ArrowLeft'].includes(e.code)) return;
 
-  const activeElement = graphDocument.activeElement
-  const activeElementEffectiveDirection = window.getComputedStyle(activeElement).direction
+  const { activeElement } = graphDocument;
+  const activeElementEffectiveDirection = window.getComputedStyle(activeElement).direction;
 
-  if (activeElementEffectiveDirection === 'ltr') return
+  if (activeElementEffectiveDirection === 'ltr') return;
 
   const commonKeyboardEventProperties = {
     bubbles: false,
@@ -21,65 +21,30 @@ const handleLeftRightKey = (e) => {
     ctrlKey: false,
     altKey: false,
     metaKey: false,
-  }
-
-  const rightKeyCode = {
-    key: "ArrowRight",
-    keyCode: 39,
-  }
-
-  const leftKeyCode = {
-    key: "ArrowLeft",
-    keyCode: 37,
-  }
-
-  const swipedKeyCode = e.code == "ArrowRight" ? leftKeyCode : rightKeyCode;
-
-  const keyboardEvent = new KeyboardEvent("keydown", {
-    ...swipedKeyCode,
-    ...commonKeyboardEventProperties,
-  })
-
-  top?.dispatchEvent(keyboardEvent);
-  top?.dispatchEvent(keyboardEvent);
-}
-
-const applyBidi = () => {
-  const cssSelector = 'div.ls-block:not([dir]), div.ls-page-title:not([dir])'
-  
-  // initial run on whole document
-  setDirAutoToAll(graphDocument.querySelectorAll(cssSelector))
-
-  // Define the callback function
-  const processBlocks = (mutationsList, observer) => {
-    for(let mutation of mutationsList) {
-      
-      if (mutation.type !== 'childList') continue;
-
-      for(let addedNode of mutation.addedNodes) {
-        if (addedNode.classList?.contains('ls-block')) setDirAuto(addedNode)
-        
-        const subLsBlocks = addedNode.querySelectorAll(cssSelector)
-        setDirAutoToAll(subLsBlocks)
-      }
-    }
   };
 
-  const observer = new MutationObserver(processBlocks);
-  observer.observe(graphDocument, { childList: true, subtree: true });
-}
+  const rightKeyCode = {
+    key: 'ArrowRight',
+    keyCode: 39,
+  };
 
-const applyCustomBidiStyle = () => {
-  logseq.provideStyle(customBidiStyle)
-}
+  const leftKeyCode = {
+    key: 'ArrowLeft',
+    keyCode: 37,
+  };
 
-const main = (e) => {  
-  applyBidi()
-  applyCustomBidiStyle()
-  top?.addEventListener("keydown", handleLeftRightKey);
-}
+  const swipedKeyCode = e.code === 'ArrowRight' ? leftKeyCode : rightKeyCode;
 
-logseq.ready(main).catch(console.error)
+  const keyboardEvent = new KeyboardEvent('keydown', {
+    ...swipedKeyCode,
+    ...commonKeyboardEventProperties,
+  });
+
+  // eslint-disable-next-line no-restricted-globals
+  top?.dispatchEvent(keyboardEvent);
+  // eslint-disable-next-line no-restricted-globals
+  top?.dispatchEvent(keyboardEvent);
+};
 
 const customBidiStyle = `
 .pr-2 {
@@ -296,4 +261,44 @@ blockquote {
     float: inline-end;
   }
 }
-`
+`;
+
+const applyBidi = () => {
+  const cssSelector = 'div.ls-block:not([dir]), div.ls-page-title:not([dir])';
+
+  // initial run on whole document
+  setDirAutoToAll(graphDocument.querySelectorAll(cssSelector));
+
+  // Define the callback function
+  const processBlocks = (mutationsList) => {
+    mutationsList.forEach((mutation) => {
+      if (mutation.type !== 'childList') return;
+
+      mutation.addedNodes.forEach((addedNode) => {
+        if (addedNode.classList?.contains('ls-block')) setDirAuto(addedNode);
+
+        const subLsBlocks = addedNode.querySelectorAll(cssSelector);
+        setDirAutoToAll(subLsBlocks);
+      });
+    });
+  };
+
+  const observer = new MutationObserver(processBlocks);
+  observer.observe(graphDocument, { childList: true, subtree: true });
+};
+
+const applyCustomBidiStyle = () => {
+  // eslint-disable-next-line no-undef
+  logseq.provideStyle(customBidiStyle);
+};
+
+const main = () => {
+  applyBidi();
+  applyCustomBidiStyle();
+
+  // eslint-disable-next-line no-restricted-globals
+  top?.addEventListener('keydown', handleLeftRightKey);
+};
+
+// eslint-disable-next-line no-undef, no-console
+logseq.ready(main).catch(console.error);
