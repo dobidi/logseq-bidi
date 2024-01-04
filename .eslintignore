@@ -1,0 +1,6 @@
+node_modules/
+.bscode/
+.parcel-cache/
+.github/
+
+dist/

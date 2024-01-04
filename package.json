@@ -10,13 +10,18 @@
     "main": false
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build --no-source-maps index.html --public-url ./"
+    "build": "parcel build --no-source-maps index.html --public-url ./",
+    "lint": "eslint '**/*.js'",
+    "lint-fix": "eslint --fix '**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@logseq/libs": "^0.0.15"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
     "parcel": "^2.0.0"
   },
   "logseq": {
