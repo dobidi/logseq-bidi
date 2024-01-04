@@ -5,6 +5,45 @@ const graphDocument = window.parent.document
 const setDirAuto = (node) => node.setAttribute('dir', 'auto')
 const setDirAutoToAll = (nodes) => nodes.forEach((node) => setDirAuto(node))
 
+const handleLeftRightKey = (e) => {
+  if (e.shiftKey || e.ctrlKey) return
+  if (!["ArrowRight", "ArrowLeft"].includes(e.code)) return
+
+  const activeElement = graphDocument.activeElement
+  const activeElementEffectiveDirection = window.getComputedStyle(activeElement).direction
+
+  if (activeElementEffectiveDirection === 'ltr') return
+
+  const commonKeyboardEventProperties = {
+    bubbles: false,
+    cancelable: false,
+    shiftKey: false,
+    ctrlKey: false,
+    altKey: false,
+    metaKey: false,
+  }
+
+  const rightKeyCode = {
+    key: "ArrowRight",
+    keyCode: 39,
+  }
+
+  const leftKeyCode = {
+    key: "ArrowLeft",
+    keyCode: 37,
+  }
+
+  const swipedKeyCode = e.code == "ArrowRight" ? leftKeyCode : rightKeyCode;
+
+  const keyboardEvent = new KeyboardEvent("keydown", {
+    ...swipedKeyCode,
+    ...commonKeyboardEventProperties,
+  })
+
+  top?.dispatchEvent(keyboardEvent);
+  top?.dispatchEvent(keyboardEvent);
+}
+
 const applyBidi = () => {
   const cssSelector = 'div.ls-block:not([dir]), div.ls-page-title:not([dir])'
   
@@ -37,6 +76,7 @@ const applyCustomBidiStyle = () => {
 const main = (e) => {  
   applyBidi()
   applyCustomBidiStyle()
+  top?.addEventListener("keydown", handleLeftRightKey);
 }
 
 logseq.ready(main).catch(console.error)
