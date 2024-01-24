@@ -23,7 +23,7 @@
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "parcel": "^2.0.0"
+    "parcel": "^2.11.0"
   },
   "logseq": {
     "icon": "icon.png",
