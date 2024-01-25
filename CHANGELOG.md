@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Prevent `addedNode.querySelectorAll is not a function` error (#13)
 - Improve mutation observation (#14)
+- Fix left/right key malbehavior at the beginning and the end of the text (#15)
 
 ## [0.2.0] - 2024-01-04
 
