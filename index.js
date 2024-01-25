@@ -272,8 +272,6 @@ const applyBidi = () => {
   // Define the callback function
   const processBlocks = (mutationsList) => {
     mutationsList.forEach((mutation) => {
-      if (mutation.type !== 'childList') return;
-
       mutation.addedNodes.forEach((addedNode) => {
         if (addedNode.nodeType !== Node.ELEMENT_NODE) return;
 
@@ -286,7 +284,11 @@ const applyBidi = () => {
   };
 
   const observer = new MutationObserver(processBlocks);
-  observer.observe(graphDocument, { childList: true, subtree: true });
+  observer.observe(graphDocument, {
+    attributes: false,
+    childList: true,
+    subtree: true,
+  });
 };
 
 const applyCustomBidiStyle = () => {
