@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2024-01-25
+
 ### Fixed
 - Prevent `addedNode.querySelectorAll is not a function` error (#13)
 - Improve mutation observation (#14)
@@ -32,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The initial release with the core functionality (#1)
 
-[unreleased]: https://github.com/dobidi/logseq-bidi/compare/0.2.0...HEAD
+[unreleased]: https://github.com/dobidi/logseq-bidi/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/dobidi/logseq-bidi/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/dobidi/logseq-bidi/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/dobidi/logseq-bidi/compare/0.0.2...0.1.0
 [0.0.2]: https://github.com/dobidi/logseq-bidi/compare/0.0.1...0.0.2
