@@ -9,10 +9,15 @@ const handleLeftRightKey = (e) => {
   if (e.shiftKey || e.ctrlKey) return;
   if (!['ArrowRight', 'ArrowLeft'].includes(e.code)) return;
 
-  const { activeElement } = graphDocument;
-  const activeElementEffectiveDirection = window.getComputedStyle(activeElement).direction;
+  if (e.target.tagName !== 'TEXTAREA') return;
 
-  if (activeElementEffectiveDirection === 'ltr') return;
+  const editorElement = e.target;
+  const editorElementEffectiveDirection = window.getComputedStyle(editorElement).direction;
+
+  if (editorElementEffectiveDirection === 'ltr') return;
+
+  e.preventDefault();
+  e.stopPropagation();
 
   const commonKeyboardEventProperties = {
     bubbles: false,
@@ -40,8 +45,6 @@ const handleLeftRightKey = (e) => {
     ...commonKeyboardEventProperties,
   });
 
-  // eslint-disable-next-line no-restricted-globals
-  top?.dispatchEvent(keyboardEvent);
   // eslint-disable-next-line no-restricted-globals
   top?.dispatchEvent(keyboardEvent);
 };
@@ -300,8 +303,7 @@ const main = () => {
   applyBidi();
   applyCustomBidiStyle();
 
-  // eslint-disable-next-line no-restricted-globals
-  top?.addEventListener('keydown', handleLeftRightKey);
+  graphDocument.addEventListener('keydown', handleLeftRightKey);
 };
 
 // eslint-disable-next-line no-undef, no-console
