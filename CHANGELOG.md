@@ -7,15 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Prevent `addedNode.querySelectorAll is not a function` error (#13)
+
 ## [0.2.0] - 2024-01-04
 
 ### Fixed
--  Fixed left/right arrow key behavior in RTL content (#9)
+- Fixed left/right arrow key behavior in RTL content (#9)
 
 ## [0.1.0] - 2023-08-26
 
 ### Added
--  Add style to fix bidi in the default theme (#4)
+- Add style to fix bidi in the default theme (#4)
 
 ## [0.0.2] - 2023-08-25
 
