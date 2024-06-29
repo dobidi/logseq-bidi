@@ -11,6 +11,10 @@ RTL and LTR content.
 ## Installation
 Install from the marketplace within the Logseq plugins section.
 
+## Usage
+Just install and it works!
+logseq-bidi is a passive plugin, there is no need for the user to take any action or do any configuration.
+
 ## Development
 - Clone this repo
 - Run `npm install`
